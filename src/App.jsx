@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Search from './Components/Search'
 
 
 
@@ -7,7 +8,7 @@ function App() {
 
   return (
     <div className="App">
-     
+     <Search />
     </div>
   )
 }
