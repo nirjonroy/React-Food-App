@@ -4,6 +4,7 @@ import FoodList from './Components/FoodList';
 import Nav from './Components/Nav';
 import "./App.css"
 import Container from './Components/Container';
+import InnerContainer from './Components/InnerContainer';
 
 
 function App() {
@@ -14,7 +15,10 @@ function App() {
       <Nav />
      <Search foodData={foodData} setFoodData={setFoodData} />
       <Container>
-      <FoodList foodData={foodData}  />
+        <InnerContainer> 
+        <FoodList foodData={foodData}  />
+        </InnerContainer>
+      
       </Container>
     
     </div>
