@@ -3,6 +3,7 @@ import Search from './Components/Search'
 import FoodList from './Components/FoodList';
 import Nav from './Components/Nav';
 import "./App.css"
+import Container from './Components/Container';
 
 
 function App() {
@@ -12,8 +13,10 @@ function App() {
     <div className="App">
       <Nav />
      <Search foodData={foodData} setFoodData={setFoodData} />
-
-     <FoodList foodData={foodData}  />
+      <Container>
+      <FoodList foodData={foodData}  />
+      </Container>
+    
     </div>
   )
 }
