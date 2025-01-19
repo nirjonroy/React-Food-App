@@ -1,3 +1,4 @@
+import styles from './fooddetails.module.css';
 import { useEffect, useState } from "react";
 
 export default function FoodDetails({foodId}){
@@ -16,12 +17,12 @@ export default function FoodDetails({foodId}){
         fetchFood();
     }, [foodId]);
     return <div>
-        <div>
-        <h1> {food.title}
+        <div className={styles.reciepeCard}>
+        <h1 className={styles.reciepeName}> {food.title}
             
             </h1>
-            <img src={food.image} alt="" />
-        <div>
+            <img className={styles.reciepeImage} src={food.image} alt="" />
+        <div className={styles.reciepeDetails}>
         <span>
         <strong>
                 ⏲️ {food.readyInMinutes}</strong>
@@ -35,8 +36,10 @@ export default function FoodDetails({foodId}){
             <span>{food.pricePerServing}</span>
         </div>
         </div>
-        <div>
-            <h2>Ingredients</h2>
+        <h2>Ingredients</h2>
+        <h2>Instracts</h2>
+        <div className={styles.reciepeInctructions}>
+            
             {isLoading? <p>Loading..........</p>: food.analyzedInstructions && food.analyzedInstructions[0] && food.analyzedInstructions[0].steps && food.analyzedInstructions[0].steps.map((step, index)=>(
             <li key={index}>{step.step}</li>
         ))}
