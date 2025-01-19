@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 
 export default function FoodDetails({foodId}){
     const [food, setFood] = useState({});
+    const [isLoading, setIsLoading] = useState(true);
     const URL = `https://api.spoonacular.com/recipes/${foodId}/information`;
     const API_KEY = "86358afcba5e4d76a5c0a3f67f9dd8db";
     useEffect(()=>{
@@ -10,13 +11,36 @@ export default function FoodDetails({foodId}){
            const data = await res.json();
            console.log(data);
            setFood(data);
+           setIsLoading(false);
         }
         fetchFood();
     }, [foodId]);
     return <div>
-        <h1>Food Details : {foodId}
-            {food.title}
+        <div>
+        <h1> {food.title}
+            
+            </h1>
             <img src={food.image} alt="" />
-        </h1>
+        <div>
+        <span>
+        <strong>
+                ⏲️ {food.readyInMinutes}</strong>
+        </span>
+        <span>
+            <strong>{food.servings}</strong>
+         {food.vegitarian ? "🥕 Vegitarian" : "🍖 Non-Vegitarian"}
+        </span>
+        </div>
+        <div>
+            <span>{food.pricePerServing}</span>
+        </div>
+        </div>
+        <div>
+            <h2>Ingredients</h2>
+            {isLoading? <p>Loading..........</p>: food.analyzedInstructions && food.analyzedInstructions[0] && food.analyzedInstructions[0].steps && food.analyzedInstructions[0].steps.map((step, index)=>(
+            <li key={index}>{step.step}</li>
+        ))}
+       
+        </div>
     </div>;
 }
