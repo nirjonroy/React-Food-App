@@ -1,4 +1,4 @@
-import styles from './fooddetails.module.css';
+import styles from "./fooddetails.module.css";
 import { useEffect, useState } from "react";
 import ItemList from './ItemList';
 
